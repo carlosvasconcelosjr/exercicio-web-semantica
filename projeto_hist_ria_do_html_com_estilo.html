@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Jornada do HTML - Versão Estilizada</title>
+    <style>
+        /* Importando uma fonte moderna e legível do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        /* 1. RESET BÁSICO E VARIÁVEIS */
+        :root {
+            --cor-fundo: #f3f4f6;
+            --cor-texto: #374151;
+            --cor-primaria: #2563eb;
+            --cor-secundaria: #dbeafe;
+            --cor-branca: #ffffff;
+            --borda-raio: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 2. CABEÇALHO E NAVEGAÇÃO */
+        header {
+            background-color: var(--cor-branca);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-primaria);
+        }
+
+        /* 3. ESTRUTURA PRINCIPAL (Flexbox para alinhar conteúdo e barra lateral) */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            /* Faz o main crescer e empurrar o footer pra baixo */
+        }
+
+        /* 4. ARTIGO E SEÇÕES */
+        article {
+            flex: 3;
+            /* Ocupa mais espaço que o aside */
+            background-color: var(--cor-branca);
+            padding: 2rem;
+            border-radius: var(--borda-raio);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        article>p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #4b5563;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        section h2 {
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* 5. BARRA LATERAL (ASIDE) */
+        aside {
+            flex: 1;
+            /* Ocupa menos espaço */
+            min-width: 250px;
+            background-color: var(--cor-secundaria);
+            padding: 1.5rem;
+            border-radius: var(--borda-raio);
+            height: fit-content;
+            /* Para não esticar com a altura do artigo */
+            border-left: 4px solid var(--cor-primaria);
+        }
+
+        aside h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 0.5rem;
+        }
+
+        /* 6. IMAGENS E LEGENDAS */
+        figure {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        /* 7. ELEMENTOS DE TEXTO E SEMÂNTICOS */
+        mark {
+            background-color: #fef08a;
+            /* Amarelo suave */
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        time {
+            font-weight: bold;
+            color: #111827;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 8. ELEMENTO INTERATIVO (DETAILS / SUMMARY) */
+        details {
+            background-color: var(--cor-branca);
+            border: 1px solid #e5e7eb;
+            border-radius: var(--borda-raio);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            width: 100%;
+            /* Para ocupar a linha toda se cair pra baixo do aside */
+        }
+
+        summary {
+            font-weight: 600;
+            color: var(--cor-primaria);
+            cursor: pointer;
+            outline: none;
+        }
+
+        details p {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #e5e7eb;
+        }
+
+        /* 9. RODAPÉ */
+        footer {
+            background-color: #1f2937;
+            color: #f9fafb;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        /* 10. RESPONSIVIDADE (Telas menores) */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+
+            aside {
+                border-left: none;
+                border-top: 4px solid var(--cor-primaria);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>A Jornada do HTML: Da Primeira Teia ao Padrão Semântico</h1>
+        <nav>
+            <ul>
+                <li><a href="#fase1">A Ideia Original</a></li>
+                <li><a href="#fase2">A Evolução</a></li>
+                <li><a href="#fase3">Busca por Padrões</a></li>
+                <li><a href="#fase4">HTML5</a></li>
+                <li><a href="#fase5">Estado Atual</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- ARTIGO PRINCIPAL -->
+        <article>
+            <p>O HTML não nasceu como a linguagem complexa que conhecemos hoje. Sua história é marcada pela necessidade
+                de comunicação e pela constante evolução para tornar a web um ambiente acessível, rico e organizado.</p>
+
+            <section id="fase1">
+                <h2>1. A Ideia Original (<time datetime="1989">1989</time> - <time datetime="1991">1991</time>)</h2>
+                <figure>
+                    <!-- Imagem placeholder que gera um visual bacana -->
+                    <img src="tim-berners-lee2.webp" alt="Foto de Tim Berners-Lee">
+                    <figcaption>Tim Berners-Lee, o criador da World Wide Web no CERN.</figcaption>
+                </figure>
+                <p>Tudo começou no CERN com o físico britânico Tim Berners-Lee. A ideia era criar um sistema que
+                    permitisse aos cientistas compartilhar documentos. Em <time datetime="1991-08">1991</time>, ele
+                    publicou o primeiro documento formal descrevendo as tags HTML.</p>
+            </section>
+
+            <section id="fase2">
+                <h2>2. A Evolução e a Guerra dos Navegadores (Anos 90)</h2>
+                <p>Com a popularização da web, a demanda por páginas mais atraentes explodiu.</p>
+                <ul>
+                    <li><strong>HTML 2.0 (<time datetime="1995">1995</time>):</strong> Trouxe a padronização inicial.
+                    </li>
+                    <li><strong>HTML 3.2 e 4.01 (<time datetime="1997">1997</time> - <time
+                                datetime="1999">1999</time>):</strong> Marcada pela <mark>guerra dos navegadores</mark>.
+                        Tabelas eram usadas para layout, tornando o código caótico.</li>
+                </ul>
+            </section>
+
+            <section id="fase3">
+                <h2>3. A Busca por Padrões (Anos 2000)</h2>
+                <p>Para consertar a bagunça, o W3C criou o XHTML. A grande lição dessa fase foi a <mark>separação de
+                        responsabilidades</mark> entre estrutura (HTML) e visual (CSS).</p>
+            </section>
+
+            <section id="fase4">
+                <h2>4. A Revolução do HTML5 e a Web Semântica (<time datetime="2014">2014</time>)</h2>
+                <figure>
+                    <img src="logo-html-5-256_2.png" alt="Logo do HTML5">
+                    <figcaption>HTML5: O marco da web semântica e aplicações ricas.</figcaption>
+                </figure>
+                <p>O HTML5 mudou o jogo. Trouxe suporte nativo para áudio e vídeo e introduziu a Semântica, dando
+                    significado real para navegadores e leitores de tela em vez de usarmos apenas divs genéricas.</p>
+            </section>
+
+            <section id="fase5">
+                <h2>5. O Estado Atual: Living Standard</h2>
+                <p>Hoje, o HTML não recebe mais versões numeradas. Ele é mantido como um <mark>Living Standard</mark>
+                    (Padrão Vivo), atualizado continuamente de forma fluida.</p>
+            </section>
+        </article>
+
+        <!-- BARRA LATERAL -->
+        <aside>
+            <h3>Curiosidade</h3>
+            <p>O primeiro site da história foi publicado em agosto de 1991 e ainda está no ar! Ele servia apenas para
+                explicar o que era o projeto da World Wide Web, criado num computador NeXT.</p>
+        </aside>
+
+        <!-- ELEMENTO INTERATIVO -->
+        <details>
+            <summary>O que é a W3C? (Clique para expandir)</summary>
+            <p>O World Wide Web Consortium (W3C) é a principal organização internacional de padronização da World Wide
+                Web, onde organizações membros, uma equipe em tempo integral e o público trabalham juntos para
+                desenvolver padrões para a Web.</p>
+        </details>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>Projeto de Estudo: Prática de HTML Semântico. &copy; <time datetime="2026">2026</time></p>
+    </footer>
+
+</body>
+
+</html>
